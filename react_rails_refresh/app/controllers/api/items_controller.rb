@@ -24,11 +24,14 @@ class Api::ItemsController < ApplicationController
     render json: { message: 'item deleted' }
   end
 
+  def show
+    @item = Item.find(item_params)
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:name, :complete)
   end
-
 
 end
